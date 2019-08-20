@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.preloader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: goldenrod;
+    transition: all 2s ease-in-out;
+}
