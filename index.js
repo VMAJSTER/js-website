@@ -8,10 +8,10 @@ console.log(preloader);
 
 app.appendChild(preloader);
 window.addEventListener('load', function () {
-  setTimeout(function() {
+  setTimeout(function () {
     preloader.className += ' hidden';
   },
-  2000);
+    2000);
 });
 
 
@@ -36,12 +36,37 @@ var amount = 1;
 let gender = "male";
 let region = 'poland';
 
+// fetch(`http://ipinfo.io/?format=jsonp&callback=getIP`)
+//   .then(function (dajip) {
+//     return dajip.json();
+//   })
+//   .then(function (dajip) {
+//     console.log(JSON.stringify(dajip));
+
+//     let p = document.querySelector(".container");
+
+//     p.innerHTML = dajip.ip;
+//   });
+// http://ipinfo.io/?format=jsonp&callback=getIP
+
+fetch(`https://api.ipify.org?format=json`)
+  .then(function (dajip) {
+    return dajip.json();
+  })
+  .then(function (dajip) {
+    console.log(JSON.stringify(dajip));
+
+    let p = document.querySelector(".container");
+
+    p.innerHTML = dajip.ip;
+  });
+
 // fetch('https://uinames.com/api/?amount=1')
 fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${region}`)
-  .then(function(response) {
+  .then(function (response) {
     return response.json();
   })
-  .then(function(myJson) {
+  .then(function (myJson) {
     console.log(JSON.stringify(myJson));
 
     let p = document.querySelector(".container");
@@ -49,7 +74,6 @@ fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${regio
     p.innerHTML = myJson.name;
   });
 
-// http://ipinfo.io/?format=jsonp&callback=getIP
 
 // const fetchPromise = fetch('https://ghibliapi.herokuapp.com/people');
 // console.log(fetchPromise);
@@ -66,7 +90,7 @@ fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${regio
 //   console.log(people);
 
   // let p = document.querySelector(".container");
-  
+
   // p.innerHTML = people.name;
   // 
 

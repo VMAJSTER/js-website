@@ -18,3 +18,8 @@
     transition: all 2s ease-in-out;
     opacity: 0;
 }
+
+img {
+    width: 10%;
+    height: 10%;
+}
