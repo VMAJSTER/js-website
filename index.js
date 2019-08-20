@@ -71,7 +71,7 @@ fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${regio
 
     let p = document.querySelector(".container");
 
-    p.innerHTML = myJson.name;
+    // p.innerHTML = myJson.name;
   });
 
 
