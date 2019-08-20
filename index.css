@@ -10,7 +10,7 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background: goldenrod;
+    background: #daa520;
 
 }
 
@@ -19,7 +19,26 @@
     opacity: 0;
 }
 
+.root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #a7a7a7;
+    overflow: hidden;
+}
+
 img {
-    width: 10%;
-    height: 10%;
+    width: 200px;
+    height: 70px;
+}
+
+button {
+    padding: 5px;
+}
+
+button:hover {
+    cursor: progress;
 }
