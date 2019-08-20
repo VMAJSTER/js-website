@@ -6,14 +6,15 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    opacity: 0;
-}
-
 .preloader {
     position: fixed;
     width: 100vw;
     height: 100vh;
     background: goldenrod;
+
+}
+
+.hidden {
     transition: all 2s ease-in-out;
+    opacity: 0;
 }

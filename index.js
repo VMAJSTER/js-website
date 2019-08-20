@@ -6,21 +6,7 @@ const preloader = document.createElement('div');
 preloader.setAttribute('class', 'preloader');
 console.log(preloader);
 
-
-
-const logo = document.createElement('img');
-logo.src = 'logo.png';
-console.log(logo);
-
-const container = document.createElement('div')
-container.setAttribute('class', 'container')
-console.log(container);
-
-
-
 app.appendChild(preloader);
-
-
 window.addEventListener('load', function () {
   setTimeout(function() {
     preloader.className += ' hidden';
@@ -30,20 +16,65 @@ window.addEventListener('load', function () {
 
 
 
+
+const logo = document.createElement('img');
+logo.setAttribute('class', 'logo');
+logo.src = 'logo.png';
+console.log(logo);
+
+const container = document.createElement('div');
+container.setAttribute('class', 'container');
+console.log(container);
+
+
+
 app.appendChild(logo);
 app.appendChild(container);
 
 
+var amount = 1;
+let gender = "male";
+let region = 'poland';
 
-
-fetch('https://uinames.coom/api/?amount=1')
+// fetch('https://uinames.com/api/?amount=1')
+fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${region}`)
   .then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
     console.log(JSON.stringify(myJson));
+
+    let p = document.querySelector(".container");
+
+    p.innerHTML = myJson.name;
   });
 
+// http://ipinfo.io/?format=jsonp&callback=getIP
+
+// const fetchPromise = fetch('https://ghibliapi.herokuapp.com/people');
+// console.log(fetchPromise);
+
+// const fetchPromise = fetch("https://ghibliapi.herokuapp.com/people");
+// fetchPromise.then(response => {
+//   console.log(response);
+
+// });
+// const biereapidogarazu = fetch("https://ghibliapi.herokuapp.com/people");
+// biereapidogarazu.then(response => {
+//   return response.json();
+// }).then(people => {
+//   console.log(people);
+
+  // let p = document.querySelector(".container");
+  
+  // p.innerHTML = people.name;
+  // 
+
+
+// });
+
+
+// const pogodadlaip = fetch('https://api.xman8830.ovh/weather/?key=tZXfZ3i7kNF4amnZmi2Q&ip=176.112.72.6');
 
 
 // data.forEach(movie => {
