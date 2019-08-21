@@ -11,7 +11,7 @@ window.addEventListener('load', function () {
   setTimeout(function () {
     preloader.className += ' hidden';
   },
-    2000);
+    0);
 });
 
 // function mojafunkcja() {
@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
   setTimeout(function () {
     preloader.style.display = "none";
   },
-    4000);
+    0);
 });
 
 const logo = document.createElement('img');
@@ -60,6 +60,11 @@ imie.setAttribute('class', 'text imie');
 console.log(imie);
 divzip.appendChild(imie);
 
+const nazwisko = document.createElement('p');
+nazwisko.setAttribute('class', 'text nazwisko');
+console.log(nazwisko);
+divzip.appendChild(nazwisko);
+
 const paragrafy = ["p", "p", "p", "p"];
 console.log(paragrafy[2]);
 
@@ -82,7 +87,21 @@ fetch(`https://api.ipify.org?format=json`)
     document.querySelector(".adresip").innerHTML = dajip.ip;
     // p.innerHTML = dajip.ip;
 
+    fetch(`https://api.xman8830.ovh/weather/?key=tZXfZ3i7kNF4amnZmi2Q&ip=176.112.72.6`)
+      .then(function (dajpogode) {
+        return dajpogode.json();
+      })
+      .then(function (dajpogode) {
+        console.log(JSON.stringify(dajpogode));
+
+        document.querySelector(".adresip").innerHTML = dajip.ip;
+        console.log(dajpogode);
+        // p.innerHTML = dajip.ip;
+
+      });
   });
+
+
 
 
 
@@ -93,23 +112,48 @@ const generuj = document.querySelector('.button');
 
 
 
+// function feczapi() {
+//   alert('hello world');
+//   var amount = 1;
+//   let gender = 'female';
+//   let region = 'poland';
+//   // fetch('https://uinames.com/api/?amount=1')
+//   fetch(`https://uinames.com/api/?amount=${amount}&region=${region}&gender=${gender}`)
+//     // fetch(`https://uinames.com/api/?region=poland?gender=male`)
+//     .then(function (fajnaOdpowiedz) {
+//       return fajnaOdpowiedz.json();
+//     })
+//     .then(function (fajnaOdpowiedz) {
+//       console.log(JSON.stringify(fajnaOdpowiedz));
+
+//       document.querySelector(".imie").innerHTML = fajnaOdpowiedz.name;
+//       document.querySelector(".nazwisko").innerHTML = fajnaOdpowiedz.surname;
+
+//     });
+// }
+
 function feczapi() {
   alert('hello world');
-  var amount = 1;
-  let gender = "male";
-  let region = "poland";
+  var amount = 404;
+  let gender = 'female';
+  let region = 'poland';
   // fetch('https://uinames.com/api/?amount=1')
-  fetch(`https://uinames.com/api/?amount=${amount}?region=${region}?gender=${gender}`)
+  fetch(`https://uinames.com/api/?amount=${amount}&region=${region}&gender=${gender}`)
     // fetch(`https://uinames.com/api/?region=poland?gender=male`)
     .then(function (fajnaOdpowiedz) {
-      return response.json();
+      return fajnaOdpowiedz.json();
     })
     .then(function (fajnaOdpowiedz) {
-      console.log(JSON.stringify(myJson));
+      console.log(JSON.stringify(fajnaOdpowiedz));
+      console.log(fajnaOdpowiedz);
 
-      document.querySelector(".imie").innerHTML = myJson.name;
-
+      for (i = 0; i < fajnaOdpowiedz.length; i++) {
+        document.querySelector(".imie").insertAdjacentHTML("beforeend", fajnaOdpowiedz[i].name + "." + fajnaOdpowiedz[i].surname + "@gmail.com" + "<br/>");
+        console.log(i);
+      };
     });
+
+
 }
 
 // generuj.addEventListener('click', feczapi);
