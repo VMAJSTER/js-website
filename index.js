@@ -94,7 +94,7 @@ fetch(`https://api.ipify.org?format=json`)
       .then(function (dajpogode) {
         console.log(JSON.stringify(dajpogode));
 
-        document.querySelector(".adresip").innerHTML = dajip.ip;
+        // document.querySelector(".adresip").innerHTML = dajpogode.ip;
         console.log(dajpogode);
         // p.innerHTML = dajip.ip;
 
