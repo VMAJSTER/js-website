@@ -11,11 +11,24 @@ window.addEventListener('load', function () {
   setTimeout(function () {
     preloader.className += ' hidden';
   },
-    2000);
+    0);
 });
 
+// function mojafunkcja() {
+//   setTimeout(function () {
+//     preloader.style.display = "none";
+//   },
+//     4000);
+// };
 
+// window.addEventListener('load', mojafunkcja);
 
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    preloader.style.display = "none";
+  },
+    0);
+});
 
 const logo = document.createElement('img');
 logo.setAttribute('class', 'logo');
@@ -26,28 +39,43 @@ const container = document.createElement('div');
 container.setAttribute('class', 'container');
 console.log(container);
 
-
-
 app.appendChild(logo);
 app.appendChild(container);
 
 
-var amount = 1;
-let gender = "male";
-let region = 'poland';
 
-// fetch(`http://ipinfo.io/?format=jsonp&callback=getIP`)
-//   .then(function (dajip) {
-//     return dajip.json();
-//   })
-//   .then(function (dajip) {
-//     console.log(JSON.stringify(dajip));
+const divzip = document.createElement('div');
+divzip.setAttribute('class', 'divzip');
+console.log(divzip);
+container.appendChild(divzip);
 
-//     let p = document.querySelector(".container");
+const adresip = document.createElement('p');
+adresip.setAttribute('class', 'text adresip');
+console.log(adresip);
+divzip.appendChild(adresip);
 
-//     p.innerHTML = dajip.ip;
-//   });
-// http://ipinfo.io/?format=jsonp&callback=getIP
+
+const imie = document.createElement('p');
+imie.setAttribute('class', 'text imie');
+console.log(imie);
+divzip.appendChild(imie);
+
+const nazwisko = document.createElement('p');
+nazwisko.setAttribute('class', 'text nazwisko');
+console.log(nazwisko);
+divzip.appendChild(nazwisko);
+
+const paragrafy = ["p", "p", "p", "p"];
+console.log(paragrafy[2]);
+
+
+const btnGenerate = document.createElement('button');
+btnGenerate.innerHTML = 'Kliknij, aby wygenerować';
+btnGenerate.setAttribute('class', 'button');
+// btnGenerate.setAttribute('href', '#');
+console.log(btnGenerate);
+divzip.appendChild(btnGenerate);
+
 
 fetch(`https://api.ipify.org?format=json`)
   .then(function (dajip) {
@@ -56,23 +84,88 @@ fetch(`https://api.ipify.org?format=json`)
   .then(function (dajip) {
     console.log(JSON.stringify(dajip));
 
-    let p = document.querySelector(".container");
+    document.querySelector(".adresip").innerHTML = dajip.ip;
+    // p.innerHTML = dajip.ip;
 
-    p.innerHTML = dajip.ip;
+    fetch(`https://api.xman8830.ovh/weather/?key=tZXfZ3i7kNF4amnZmi2Q&ip=176.112.72.6`)
+      .then(function (dajpogode) {
+        return dajpogode.json();
+      })
+      .then(function (dajpogode) {
+        console.log(JSON.stringify(dajpogode));
+
+        // document.querySelector(".adresip").innerHTML = dajpogode.ip;
+        console.log(dajpogode);
+        // p.innerHTML = dajip.ip;
+
+      });
   });
 
-// fetch('https://uinames.com/api/?amount=1')
-fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${region}`)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (myJson) {
-    console.log(JSON.stringify(myJson));
 
-    let p = document.querySelector(".container");
 
-    p.innerHTML = myJson.name;
-  });
+
+
+
+
+
+const generuj = document.querySelector('.button');
+
+
+
+// function feczapi() {
+//   alert('hello world');
+//   var amount = 1;
+//   let gender = 'female';
+//   let region = 'poland';
+//   // fetch('https://uinames.com/api/?amount=1')
+//   fetch(`https://uinames.com/api/?amount=${amount}&region=${region}&gender=${gender}`)
+//     // fetch(`https://uinames.com/api/?region=poland?gender=male`)
+//     .then(function (fajnaOdpowiedz) {
+//       return fajnaOdpowiedz.json();
+//     })
+//     .then(function (fajnaOdpowiedz) {
+//       console.log(JSON.stringify(fajnaOdpowiedz));
+
+//       document.querySelector(".imie").innerHTML = fajnaOdpowiedz.name;
+//       document.querySelector(".nazwisko").innerHTML = fajnaOdpowiedz.surname;
+
+//     });
+// }
+
+function feczapi() {
+  alert('hello world');
+  var amount = 404;
+  let gender = 'female';
+  let region = 'poland';
+  // fetch('https://uinames.com/api/?amount=1')
+  fetch(`https://uinames.com/api/?amount=${amount}&region=${region}&gender=${gender}`)
+    // fetch(`https://uinames.com/api/?region=poland?gender=male`)
+    .then(function (fajnaOdpowiedz) {
+      return fajnaOdpowiedz.json();
+    })
+    .then(function (fajnaOdpowiedz) {
+      console.log(JSON.stringify(fajnaOdpowiedz));
+      console.log(fajnaOdpowiedz);
+
+      for (i = 0; i < fajnaOdpowiedz.length; i++) {
+        document.querySelector(".imie").insertAdjacentHTML("beforeend", fajnaOdpowiedz[i].name + "." + fajnaOdpowiedz[i].surname + "@gmail.com" + "<br/>");
+        console.log(i);
+      };
+    });
+
+
+}
+
+// generuj.addEventListener('click', feczapi);
+// generuj.addEventListener('click', feczapi);
+
+function test() {
+  console.log("dziala");
+}
+console.log(feczapi);
+console.log(generuj);
+
+generuj.addEventListener("click", feczapi);
 
 
 // const fetchPromise = fetch('https://ghibliapi.herokuapp.com/people');
@@ -81,6 +174,9 @@ fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${regio
 // const fetchPromise = fetch("https://ghibliapi.herokuapp.com/people");
 // fetchPromise.then(response => {
 //   console.log(response);
+
+
+
 
 // });
 // const biereapidogarazu = fetch("https://ghibliapi.herokuapp.com/people");
@@ -96,6 +192,9 @@ fetch(`https://uinames.com/api/?amount=${amount}?gender=${gender}?region=${regio
 
 
 // });
+
+
+
 
 
 // const pogodadlaip = fetch('https://api.xman8830.ovh/weather/?key=tZXfZ3i7kNF4amnZmi2Q&ip=176.112.72.6');
